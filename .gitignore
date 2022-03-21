@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
-
+outfile
+infile
 # Object files
 *.o
 *.ko
@@ -35,12 +36,13 @@
 *.i*86
 *.x86_64
 *.hex
-
+pipex
 # Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
+.vscode/
 
 # Kernel Module Compile Results
 *.mod*
