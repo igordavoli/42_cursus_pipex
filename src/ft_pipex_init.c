@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:16:24 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 22:33:20 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:42:50 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_set_pipex_null(t_pipex *pipex)
 	pipex->argv = NULL;
 	pipex->envp = NULL;
 	pipex->cmds = NULL;
-	pipex->cmdpath = NULL;
+	pipex->cmdpath = "";
 	pipex->infile = NULL;
 	pipex->outfile = NULL;
 }

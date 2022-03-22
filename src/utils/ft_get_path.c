@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:18:04 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 00:38:05 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:46:04 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_get_path(t_pipex *pipex)
 	char	*cmd;
 
 	path_list = ft_get_paths(pipex);
-	cmd = ft_strjoin("/", pipex->cmds[0][0]);
+	cmd = ft_strjoin("/", pipex->cmds[1][0]);
 	i = 0;
 	while (path_list[i])
 	{

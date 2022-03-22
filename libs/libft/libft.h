@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 11:27:23 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 21:07:58 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:57:47 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+
 typedef struct s_list
 {
 	void			*content;

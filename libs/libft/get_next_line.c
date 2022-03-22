@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 23:31:22 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 20:49:56 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:58:08 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static char	*ft_substr_f(char *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-static char	*extract_line(char *buffer, char **static_buff, ssize_t read_bytes, int lf)
+static char	*extract_line(char *buffer, char **static_buff, ssize_t read_bytes,
+	int lf)
 {
 	char		*line;
 	char		*line_end;
@@ -93,7 +94,7 @@ static char	*extract_line(char *buffer, char **static_buff, ssize_t read_bytes, 
 	return (NULL);
 }
 
-static char	*get_line(int fd, char *buffer,  int lf)
+static char	*get_line(int fd, char *buffer, int lf)
 {
 	static char	*static_buff;
 	char		*line;

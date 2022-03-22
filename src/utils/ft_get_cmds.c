@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:14:31 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 22:43:54 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 23:55:30 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	ft_check_aps(t_pipex *pipex)
 {
-	int i;
-	int j;
-	int n_aps;
+	int	i;
+	int	j;
+	int	n_aps;
+
 	printf("ok\n");
 	i = 1;
 	while (pipex->argv[i])
 	{
 		n_aps = 0;
 		j = 0;
-		while(pipex->argv[i][j])
+		while (pipex->argv[i][j])
 			if (pipex->argv[i][j++] == 39)
 				n_aps++;
-		if(n_aps % 2)
+		if (n_aps % 2)
 			ft_exit_pipex(pipex, ft_strjoin("all apostrophes must be closed: ",
-				pipex->argv[i]), 1, 1);
+					pipex->argv[i]), 1, 1);
 		i++;
 	}
 }

@@ -86,7 +86,7 @@ test: all
 
 val: all
 	make re
-	valgrind --track-origins=yes --leak-check=full -s ./$(NAME) infile "grep 'igor'" "wc -l" outfile
+	valgrind --track-origins=yes --leak-check=full -s ./$(NAME) infile "grep 'igor'"  "wc -l" outfile
 
 # reb:
 # 	@make fclean && make $(NAME_BONUS)
