@@ -25,5 +25,4 @@ void	partial_print(t_pipex *pipex)
 	}
 	printf("infile:..%s\n", pipex->infile);
 	printf("outfile:.%s\n", pipex->outfile);
-	printf("curr_fd:.%d\n", pipex->curr_in_fd);
 }

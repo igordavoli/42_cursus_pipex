@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_file.c                                     :+:      :+:    :+:   */
+/*   ft_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 01:32:20 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 00:35:17 by idavoli-         ###   ########.fr       */
+/*   Created: 2022/03/21 20:28:37 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/21 21:15:52 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-char	*ft_load_file(int fd)
+int	ft_open(t_pipex *pipex, char *file, int oflag)
 {
-	int		i;
-	char	*filecontent;
-	char	*swp;
-	char	*swp2;
+	int	fd;
 
-	filecontent = (char *)malloc(sizeof(char));
-	filecontent[0] = 0;
-	i = 0;
-	while (1)
-	{
-		swp = get_next_line(fd, 1);
-		if (swp == NULL)
-			break ;
-		swp2 = filecontent;
-		filecontent = ft_strjoin(filecontent, swp);
-		free(swp);
-		free(swp2);
-		i++;
-	}
-	return (filecontent);
+	fd = open(file, oflag);
+	if (fd == -1)
+		ft_exit_pipex(pipex, ft_strjoin("cannot open file: ", file), 1, 1);
+	return (fd);
 }

@@ -19,16 +19,16 @@ HEADER = $(SRC_DIR)/pipex.h
 # HEADER_BONUS = $(SRC_DIR_BONUS)/so_long_bonus.h
 
 SRC_FILES = pipex.c\
-	ft_load_file.c\
-	utils/ft_arglen.c\
 	utils/gnl/get_next_line.c\
 	utils/gnl/get_next_line_utils.c\
 	utils/ft_free_pipex.c\
 	utils/ft_exit_pipex.c\
 	utils/ft_get_cmds.c\
 	utils/ft_get_path.c\
+	utils/ft_open.c\
 	ft_partial_print.c\
 	ft_pipex_init.c\
+	ft_exec_cmds.c\
 
 # SRC_FILES_BONUS = so_long_bonus.c\
 # 	ft_get_sprites_bonus.c\
@@ -86,7 +86,7 @@ test: all
 
 val: all
 	make re
-	valgrind --track-origins=yes --leak-check=full -s ./$(NAME) infile "grep igor" "wc -l" outfile
+	valgrind --track-origins=yes --leak-check=full -s ./$(NAME) infile "grep 'igor'" "wc -l" outfile
 
 # reb:
 # 	@make fclean && make $(NAME_BONUS)

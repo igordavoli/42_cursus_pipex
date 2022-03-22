@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 01:45:52 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 00:40:41 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:41:26 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,22 @@ void	ft_free_pipex(t_pipex *pipex)
 	int	i;
 	int	j;
 
-	if (pipex->cmds)
+	if (pipex)
 	{
-		i = 0;
-		while (pipex->cmds[i])
+		if (pipex->cmds)
 		{
-			j = 0;
-			while (pipex->cmds[i][j])
-				free(pipex->cmds[i][j++]);
-			free(pipex->cmds[i]);
-			i++;
+			i = 0;
+			while (pipex->cmds[i])
+			{
+				j = 0;
+				while (pipex->cmds[i][j])
+					free(pipex->cmds[i][j++]);
+				free(pipex->cmds[i]);
+				i++;
+			}
+			free(pipex->cmds);
 		}
-		free(pipex->cmds);
+		if (pipex->cmdpath)
+			free(pipex->cmdpath);
 	}
-	if (pipex->cmdpath)
-		free(pipex->cmdpath);
 }
