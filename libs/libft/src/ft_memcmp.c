@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 21:44:50 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:36:36 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/09/02 20:03:49 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 01:34:05 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	partial_print(t_pipex *pipex);
-
-int	main(int argc, char **argv, char **envp)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_pipex	pipex;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	ft_check_args(argc, argv);
-	ft_pipex_init(&pipex, argc, argv, envp);
-	partial_print(&pipex);
-	ft_exec_cmds(&pipex);
-	ft_free_pipex(&pipex);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (n-- > 0)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
+	}
 	return (0);
 }

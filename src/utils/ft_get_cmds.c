@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:14:31 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 23:55:30 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/22 22:52:43 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_check_aps(t_pipex *pipex)
 	int	j;
 	int	n_aps;
 
-	printf("ok\n");
 	i = 1;
 	while (pipex->argv[i])
 	{
@@ -45,6 +44,7 @@ void	ft_get_cmds( t_pipex *pipex)
 	while (i < pipex->n_cmds)
 	{
 		pipex->cmds[i] = ft_split2(pipex->argv[i + 2], ' ');
+		pipex->cmds[i][0] = ft_strjoin2("/", pipex->cmds[i][0], 0, 1);
 		i++;
 	}
 }

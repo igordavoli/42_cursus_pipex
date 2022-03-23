@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_pipex.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 01:45:52 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:26:58 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/09/05 22:20:52 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 01:34:05 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_free_pipex(t_pipex *pipex)
+int	is_space(char c)
 {
-	int	i;
-	int	j;
+	return ((c >= 9 && c <= 13) || c == ' ');
+}
 
-	if (pipex)
+int	ft_atoi(const char *str)
+{
+	int	num;
+	int	sig;
+
+	num = 0;
+	sig = 1;
+	while (is_space(*str))
+		str++;
+	if (ft_isdigit(*str) || *str == '-' || *str == '+')
 	{
-		if (pipex->cmds)
+		if (*str == '-')
+			sig = -1;
+		if (*str == '+' || *str == '-')
+			str++;
+		while (ft_isdigit(*str))
 		{
-			i = 0;
-			while (pipex->cmds[i])
-			{
-				j = 0;
-				while (pipex->cmds[i][j])
-					free(pipex->cmds[i][j++]);
-				free(pipex->cmds[i]);
-				i++;
-			}
-			free(pipex->cmds);
+			num *= 10;
+			num += *str - '0';
+			str++;
 		}
-		free(pipex->cmdpath);
 	}
+	return (num * sig);
 }

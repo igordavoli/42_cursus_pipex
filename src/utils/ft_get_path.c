@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:18:04 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 23:46:04 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/23 00:07:29 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,11 @@
 static void	ft_set_cmdpath(t_pipex *pipex)
 {
 	int		i;
-	char	*swp;
-	char	*swp2;
 
-	swp = pipex->cmdpath;
-	pipex->cmdpath = ft_strjoin(pipex->cmdpath, "/");
-	free(swp);
 	i = 0;
 	while (pipex->cmds[i])
 	{
-		swp2 = pipex->cmds[i][0];
-		pipex->cmds[i][0] = ft_strjoin(pipex->cmdpath, pipex->cmds[i][0]);
-		free(swp2);
+		pipex->cmds[i][0] = ft_strjoin2(pipex->cmdpath, pipex->cmds[i][0], 0, 1);
 		i++;
 	}
 }
@@ -41,31 +34,45 @@ static char	**ft_get_paths(t_pipex *pipex)
 	return (ft_split(pipex->envp[i], ':'));
 }
 
+static int ft_find_path(t_pipex *pipex, char **path_list, int i )
+{
+	char	*path;
+	int		j;
+
+	j = 0;
+	while(path_list[j])
+	{
+		path = ft_strjoin(path_list[j], pipex->cmds[i][0]);
+		if (access(path, F_OK) == 0)
+		{
+			free(pipex->cmdpath);
+			pipex->cmdpath = ft_strdup(path_list[j]);
+			break ;
+		}
+		free(path);
+		path = NULL;
+		j++;
+	}
+	if (path)
+		free(path);
+	return (0);
+}
+
 void	ft_get_path(t_pipex *pipex)
 {
 	int		i;
 	char	**path_list;
-	char	*path;
-	char	*cmd;
 
 	path_list = ft_get_paths(pipex);
-	cmd = ft_strjoin("/", pipex->cmds[1][0]);
 	i = 0;
-	while (path_list[i])
+	while (!(*pipex->cmdpath) && pipex->cmds[i] )
 	{
-		path = ft_strjoin(path_list[i], cmd);
-		if (access(path, F_OK) == 0)
-		{
-			pipex->cmdpath = ft_strdup(path_list[i]);
-			break ;
-		}
-		free(path);
-		free(path_list[i++]);
+		ft_find_path(pipex, path_list, i);
+		i++;
 	}
+	i = 0;
 	while (path_list[i])
 		free(path_list[i++]);
 	free(path_list);
-	free(path);
-	free(cmd);
 	ft_set_cmdpath(pipex);
 }

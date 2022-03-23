@@ -5,12 +5,13 @@ CC = gcc
 CFLAGS = -g3 -Wall -Wextra -Werror
 
 LIBFT = libs/libft/libft.a
-# FT_PRINTF = libs/ft_printf/libftprintf.a
-
 
 NAME = pipex
+
 SRC_DIR = src
+
 OBJ_DIR = objects
+
 HEADER = $(SRC_DIR)/pipex.h
 
 # NAME_BONUS = so_long_bonus
@@ -19,13 +20,12 @@ HEADER = $(SRC_DIR)/pipex.h
 # HEADER_BONUS = $(SRC_DIR_BONUS)/so_long_bonus.h
 
 SRC_FILES = pipex.c\
-	utils/gnl/get_next_line.c\
-	utils/gnl/get_next_line_utils.c\
 	utils/ft_free_pipex.c\
 	utils/ft_exit_pipex.c\
 	utils/ft_get_cmds.c\
 	utils/ft_get_path.c\
 	utils/ft_open.c\
+	utils/ft_check_args.c\
 	ft_partial_print.c\
 	ft_pipex_init.c\
 	ft_exec_cmds.c\
@@ -59,8 +59,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(HEADER)
-# make -C ./libs/ft_printf
-	make -C ./libs/libft
+	@make -C ./libs/libft
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)
 
 # $(NAME_BONUS): $(OBJ_DIR_BONUS) $(OBJ_BONUS) $(HEADER_BONUS)

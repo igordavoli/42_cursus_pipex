@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 05:16:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/21 21:16:22 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/23 00:50:27 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <wait.h>
-# include "../libs/libft/libft.h"
+# include "../libs/libft/src/libft.h"
 
 # include <stdio.h>
 
@@ -37,7 +37,7 @@ typedef struct s_pipex
 	char	*outfile;
 }	t_pipex;
 
-// void	ft_check_args(int argc, char **argv);
+void	ft_check_args(int argc, char **argv);
 void	ft_pipex_init(t_pipex *pipex, int argc, char **argv, char **envp);
 int		ft_open(t_pipex *pipex, char *file, int oflag);
 void	ft_get_cmds( t_pipex *pipex);

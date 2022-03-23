@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_pipex.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 01:45:52 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:26:58 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/09/12 23:43:41 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 01:34:05 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_free_pipex(t_pipex *pipex)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
-	int	j;
+	t_list	*new;
+	t_list	*begin;
 
-	if (pipex)
+	if (lst)
 	{
-		if (pipex->cmds)
+		begin = ft_lstnew(f(lst->content));
+		if (!begin)
+			return (NULL);
+		lst = lst->next;
+		while (lst)
 		{
-			i = 0;
-			while (pipex->cmds[i])
+			new = ft_lstnew(f(lst->content));
+			if (!new)
 			{
-				j = 0;
-				while (pipex->cmds[i][j])
-					free(pipex->cmds[i][j++]);
-				free(pipex->cmds[i]);
-				i++;
+				ft_lstclear(&begin, del);
+				return (NULL);
 			}
-			free(pipex->cmds);
+			ft_lstadd_back(&begin, new);
+			lst = lst->next;
 		}
-		free(pipex->cmdpath);
+		return (begin);
 	}
+	return (NULL);
 }

@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_resolve_chr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 21:44:50 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:36:36 by idavoli-         ###   ########.fr       */
+/*   Created: 2021/10/11 04:36:29 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 00:24:55 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	partial_print(t_pipex *pipex);
-
-int	main(int argc, char **argv, char **envp)
+static int	ft_put_space_chr(int n_spaces)
 {
-	t_pipex	pipex;
-
-	ft_check_args(argc, argv);
-	ft_pipex_init(&pipex, argc, argv, envp);
-	partial_print(&pipex);
-	ft_exec_cmds(&pipex);
-	ft_free_pipex(&pipex);
+	while (n_spaces)
+	{
+		ft_putchar_fd(' ', 1);
+		n_spaces--;
+	}
 	return (0);
+}
+
+int	ft_resolve_chr(char c, t_flags flags)
+{
+	int	len;
+
+	len = 1;
+	if (flags.f_width)
+	{
+		ft_put_space_chr(flags.f_width - 1);
+		len += (flags.f_width - 1);
+	}
+	ft_putchar_fd(c, 1);
+	if (flags.f_minus)
+	{
+		ft_put_space_chr(flags.f_minus - 1);
+		len += (flags.f_minus - 1);
+	}
+	return (len);
 }
