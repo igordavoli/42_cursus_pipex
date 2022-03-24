@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_cmds.c                                     :+:      :+:    :+:   */
+/*   ft_exec_cmds_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:21:03 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 21:02:22 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/23 22:32:57 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static void	ft_child_task(t_pipex *pipex, int i, int *curr_fd, int *pipe_fds)
 {

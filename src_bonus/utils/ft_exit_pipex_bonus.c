@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_exit_pipex_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 21:44:50 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 22:42:48 by idavoli-         ###   ########.fr       */
+/*   Created: 2022/03/21 00:42:56 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 22:32:34 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex_bonus.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_exit_pipex(t_pipex *pipex, char *message, int code, int free_msg)
 {
-	t_pipex	pipex;
-
-	ft_check_args(argc, argv);
-	ft_pipex_init(&pipex, argc, argv, envp);
-	ft_exec_cmds(&pipex);
-	ft_free_pipex(&pipex);
-	return (0);
+	ft_free_pipex(pipex);
+	ft_printf("%s\n", message);
+	if (free_msg)
+		free(message);
+	exit(code);
 }

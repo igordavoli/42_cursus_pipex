@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	partial_print(t_pipex *pipex)
 {

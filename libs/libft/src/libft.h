@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 11:27:23 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 01:31:01 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:48:48 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,17 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putnbr_fd(int n, int fd);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_get_nbr_size(int n);
 int		ft_lstsize(t_list *lst);
+t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int		ft_get_nbr_size(int n);
 void	ft_free_ptrs(void **ptr);
 void	ft_free_ptr(void **ptr);
 
@@ -108,6 +108,5 @@ void	ft_putnbr_zero(int n, int n_zeros, int len);
 void	ft_handle_zero_dot(unsigned int n, int *num_len, t_flags *flags);
 char	*ft_flg_get(t_flags *flags, char *src);
 t_flags	ft_flg_init(void);
-
 
 #endif

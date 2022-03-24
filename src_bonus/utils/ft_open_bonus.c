@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   ft_open_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 21:44:50 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 22:42:48 by idavoli-         ###   ########.fr       */
+/*   Created: 2022/03/21 20:28:37 by idavoli-          #+#    #+#             */
+/*   Updated: 2022/03/23 22:32:49 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex_bonus.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_open(t_pipex *pipex, char *file, int oflag)
 {
-	t_pipex	pipex;
+	int	fd;
 
-	ft_check_args(argc, argv);
-	ft_pipex_init(&pipex, argc, argv, envp);
-	ft_exec_cmds(&pipex);
-	ft_free_pipex(&pipex);
-	return (0);
+	fd = open(file, oflag);
+	if (fd == -1)
+		ft_exit_pipex(pipex, ft_strjoin("cannot open file: ", file), 1, 1);
+	return (fd);
 }

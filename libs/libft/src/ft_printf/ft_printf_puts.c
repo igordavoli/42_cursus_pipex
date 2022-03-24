@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 22:17:34 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 00:23:25 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:46:50 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_putnbr_hex(unsigned long long n, int is_upper, int n_zeros)
 	if (n < 16)
 	{
 		c = n;
-		if (n > 9 )
+		if (n > 9)
 			c += 87;
 		else
 			c += '0';
