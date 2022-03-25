@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 23:31:22 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 01:34:05 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 23:33:36 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ static char	*get_line(int fd, char *buffer, int lf)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
+		{
+			free(static_buff);
 			return (NULL);
+		}
 		buffer[read_bytes] = '\0';
 		line = extract_line(buffer, &static_buff, read_bytes, lf);
 	}
@@ -123,11 +126,6 @@ char	*get_next_line(int fd, int lf)
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	if (read(fd, buffer, 0) < 0)
-	{
-		free(buffer);
-		return (NULL);
-	}
 	line = get_line(fd, buffer, lf);
 	free(buffer);
 	return (line);

@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 05:16:59 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 00:50:27 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 19:08:04 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_pipex
 	int		argc;
 	char	**argv;
 	char	**envp;
-	char	*cmdpath;
 	char	*infile;
 	int		n_cmds;
 	char	***cmds;

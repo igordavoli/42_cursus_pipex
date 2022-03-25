@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:14:31 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 22:32:42 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 18:00:59 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_get_cmds( t_pipex *pipex)
 	i = 0;
 	while (i < pipex->n_cmds)
 	{
-		pipex->cmds[i] = ft_split2(pipex->argv[i + 2], ' ');
+		pipex->cmds[i] = ft_split2(pipex->argv[i + 2 + pipex->is_hd], ' ');
 		pipex->cmds[i][0] = ft_strjoin2("/", pipex->cmds[i][0], 0, 1);
 		i++;
 	}

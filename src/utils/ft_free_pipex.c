@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 01:45:52 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:26:58 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 19:08:46 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ void	ft_free_pipex(t_pipex *pipex)
 			}
 			free(pipex->cmds);
 		}
-		free(pipex->cmdpath);
 	}
 }

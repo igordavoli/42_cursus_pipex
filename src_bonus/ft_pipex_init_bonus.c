@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 02:16:24 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/24 00:09:49 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 19:17:26 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_set_pipex_null(t_pipex *pipex)
 	pipex->argv = NULL;
 	pipex->envp = NULL;
 	pipex->cmds = NULL;
-	pipex->cmdpath = strdup("");
 	pipex->infile = NULL;
 	pipex->outfile = NULL;
 	pipex->is_hd = 0;
@@ -28,10 +27,10 @@ void	ft_set_pipex_null(t_pipex *pipex)
 void	ft_pipex_init(t_pipex *pipex, int argc, char **argv, char **envp)
 {
 	ft_set_pipex_null(pipex);
-	if (ft_strncmp("here_doc", argv[1], 9) == 0 && argc >=6)
+	if (ft_strncmp("here_doc", argv[1], 9) == 0 && argc >= 6)
 	{
 		pipex->is_hd = 1;
-		pipex->limiter =argv[2];
+		pipex->limiter = argv[2];
 	}
 	else
 		pipex->infile = argv[1];

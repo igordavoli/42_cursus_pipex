@@ -6,11 +6,37 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:21:03 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/23 22:32:57 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 20:28:25 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+static int	ft_here_doc(t_pipex *pipex)
+{
+	char	*str;
+	int		fds[2];
+
+	if (pipe(fds) == -1)
+		ft_exit_pipex(pipex, "cannot create pipe!", 1, 0);
+	ft_putstr_fd("here_doc", 1);
+	while (1)
+	{
+		ft_putstr_fd("> ", 1);
+		str = get_next_line(STDIN_FILENO, 1);
+		if (ft_strncmp(str, pipex->limiter, ft_strlen(pipex->limiter)) == 0
+			&& str[ft_strlen(pipex->limiter)] == '\n')
+		{
+			close(fds[1]);
+			free(str);
+			close(0);
+			str = get_next_line(STDIN_FILENO, 1);
+			return (fds[0]);
+		}
+		ft_putstr_fd(str, fds[1]);
+		free(str);
+	}
+}
 
 static void	ft_child_task(t_pipex *pipex, int i, int *curr_fd, int *pipe_fds)
 {
@@ -51,7 +77,10 @@ void	ft_exec_cmds(t_pipex *pipex)
 	int	i;
 	int	curr_in_fd;
 
-	curr_in_fd = ft_open(pipex, pipex->infile, O_RDONLY);
+	if (pipex->is_hd)
+		curr_in_fd = ft_here_doc(pipex);
+	else
+		curr_in_fd = ft_open(pipex, pipex->infile, O_RDONLY);
 	i = 0;
 	while (i < pipex->n_cmds)
 		ft_exec_cmd(pipex, i++, &curr_in_fd);

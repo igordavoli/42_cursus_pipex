@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -g3 -Wall -Wextra -Werror
 
 LIBFT = libs/libft/libft.a
-
+VALGRIND = valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --track-children=yes --s
 NAME = pipex
 SRC_DIR = src
 OBJ_DIR = objects
@@ -34,8 +34,7 @@ SRC_FILES_BONUS = pipex_bonus.c\
 	utils/ft_get_cmds_bonus.c\
 	utils/ft_get_path_bonus.c\
 	utils/ft_open_bonus.c\
-	utils/ft_check_args_bonus.c\
-	ft_partial_print.c\
+	utils/ft_check_args_bonus.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -95,6 +94,10 @@ playb: $(NAME_BONUS)
 playbh: $(NAME_BONUS)
 	./$(NAME_BONUS) here_doc eof "grep igor" "wc -l" outfile
 
+valbh: $(NAME_BONUS)
+	make reb
+	$(VALGRIND) ./$(NAME_BONUS) here_doc eof "grep igor" "wc -l" outfile
+
 valb: $(NAME_BONUS)
 	make reb
-	valgrind --track-origins=yes --leak-check=full -s ./$(NAME_BONUS) infile "grep igor" "wc -l" outfile
+	$(VALGRIND) ./$(NAME_BONUS) infile "grep igor" "wc -l" outfile

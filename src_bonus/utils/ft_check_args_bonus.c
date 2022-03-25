@@ -6,7 +6,7 @@
 /*   By: idavoli- <idavoli-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:36:54 by idavoli-          #+#    #+#             */
-/*   Updated: 2022/03/24 00:10:47 by idavoli-         ###   ########.fr       */
+/*   Updated: 2022/03/24 19:18:39 by idavoli-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_check_args(int argc, char **argv)
 {
 	if (argc < 5)
 		ft_exit_pipex(NULL, "invalid number os arguments!", 1, 0);
-	if (ft_strncmp("here_doc", argv[1], 9) == 0 && argc >=6)
+	if (ft_strncmp("here_doc", argv[1], 9) == 0 && argc >= 6)
 		ft_check_argv_hd(argv, argc);
 	else
 		ft_check_argv(argv, argc);
